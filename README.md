@@ -16,6 +16,5 @@ This is my Polybar configuration runnning on Linux Mint. Scripts included. Updat
 - Power
 - Time
 
- ![screenshot](polybar_screenshot_2_zoomed.png)
  ![screenshot](polybar_screenshot_2.png)
 
