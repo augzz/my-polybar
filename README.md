@@ -1,13 +1,13 @@
 # My Polybar Config
-https://github.com/polybar/polybar
-
-This is my Polybar configuration runnning on Linux Mint. Scripts included. Updated with search and most used apps modules (rofi based). Search and apps modules from https://github.com/adi1090x/rofi (beautiful projects from this guy check him out).
+This is my [Polybar](https://github.com/polybar/polybar) configuration runnning on Linux Mint. Scripts included. Updated now with [themes](https://github.com/adi1090x/polybar-themes) (currently using Docky style) using [pywal](https://github.com/dylanaraps/pywal) for color pallette generation based on wallpaper. Customized some of the modules to include a window toggle (launch, minimize or maximize) instead of just launching the window.
 
 ## Modules
+- Search
 - Workspaces
-- Search 
-- Apps 
-- CPU and RAM usage
+- Apps (toggle)
+- CPU
+- RAM
+- Spotify player
 - Minimized apps
 - System tray
 - Network
