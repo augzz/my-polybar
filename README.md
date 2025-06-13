@@ -17,5 +17,7 @@ This is my [Polybar](https://github.com/polybar/polybar) configuration runnning 
 - Time
 
  ![screenshot](polybar_ss_zoomed.png)
+
+ 
  ![screenshot](polybar_ss_setup_2.png)
 
