@@ -6,9 +6,7 @@ This is my polybar configuration runnning on Linux Mint.
 
 [Polybar](https://github.com/polybar/polybar) enables Linux users to create customizable status bars for their desktop environments. It comes with integrated features to show details about widely used services. These include common features that you can probably see on your taskbar right now (start menu, pinned icons, network, sound, clock, etc). More importantly, it gives users the power to create their very own modules using scripts for functionality.
 
-Custom scripts included. Integrated with [themes](https://github.com/adi1090x/polybar-themes) using [pywal](https://github.com/dylanaraps/pywal) for color pallette generation based on wallpaper. Pywal is used in my terminal and IDE themes as well.
-
-These scripts currently give additional functionality to existing polybar modules. For example, clicking an icon would normally only launch a new window on polybar; I wanted to be able to toggle that window like a normal taskbar would and display minimized windows so they don't just disappear into the void. 
+These scripts currently give additional functionality to existing polybar modules. For example, clicking an icon would normally only launch a new window on polybar; I wanted to be able to toggle that window like a normal taskbar would. Also, display minimized windows so they don't just disappear into the void. 
 
 ## Custom Scripts
 1) terminal_toggle.sh
@@ -20,6 +18,12 @@ These scripts currently give additional functionality to existing polybar module
 4) minimized_windows.sh
    - Checks for all minimized windows and maps an icon to it to be displayed on the bar.
    - Used with: minimized-apps module (left-click to restore).
+  
+## Tools Used
+(Window Management)
+- xdotool
+- wmctrl
+- xprop
 
 ## Polybar Modules
 - Search menu
