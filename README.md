@@ -2,21 +2,36 @@
 
  ![screenshot](polybar_ss_zoomed.png)
  
-This is my [Polybar](https://github.com/polybar/polybar) configuration runnning on Linux Mint. Scripts included. Updated now with [themes](https://github.com/adi1090x/polybar-themes) (currently using Docky style) using [pywal](https://github.com/dylanaraps/pywal) for color pallette generation based on wallpaper. Customized modules include a window toggle (launch, minimize or maximize) instead of just launching the window.
+This is my [Polybar](https://github.com/polybar/polybar) configuration runnning on Linux Mint. 
 
-## Modules
-- Search
+Polybar enables Linux users to create customizable status bars for their desktop environments. It comes with integrated features to show details about widely used services. These include common features that you probably can see on your taskbar right now (start menu, pinned icons, network, sound, clock, etc). More importantly, it gives users the power to create their very own modules using scripts for functionality.
+
+Custom scripts included. Integrated with [themes](https://github.com/adi1090x/polybar-themes) using [pywal](https://github.com/dylanaraps/pywal) for color pallette generation based on wallpaper. Pywal is used in my terminal and IDE themes as well.
+
+These scripts currently give additional functionality to existing polybar modules. For example, clicking an icon would normally only launch a new window on polybar; I wanted to be able to toggle that window like a normal taskbar would and display minimized windows so they don't just disappear into the void. 
+
+## Custom Scripts
+1) terminal_toggle.sh
+   - Checks for an open terminal window, minimizes or maximizes it, or launches a new window. If multiple terminals are open, it will cycle through them to check for the most recently activated one.
+   - Used with: terminal module (left-click to toggle, right-click to launch another terminal).
+2) window_toggle.sh
+   - Pretty much does the same thing as terminal_toggle, but can be used for any application (files, Firefox, Spotify, IDE, etc) by utilizing a parameter.
+   - Used with: apps-menu module (left-click to toggle).
+4) minimized_windows.sh
+   - Checks for all minimized windows and maps an icon to it to be displayed on the bar.
+   - Used with: minimized-apps module (left-click to restore).
+
+## Polybar Modules
+- Search menu
 - Workspaces
-- Apps (toggle)
-- CPU
-- RAM
+- Apps menu 
 - Spotify player
 - Minimized apps
 - System tray
 - Network
 - Sound
 - Settings
-- Power
+- Power menu
 - Time
  
  ![screenshot](polybar_ss_setup_2.png)
