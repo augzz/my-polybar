@@ -4,7 +4,7 @@
  
 This is my polybar configuration runnning on Linux Mint. 
 
-[Polybar](https://github.com/polybar/polybar) enables Linux users to create customizable status bars for their desktop environments. It comes with integrated features to show details about widely used services. These include common features that you probably can see on your taskbar right now (start menu, pinned icons, network, sound, clock, etc). More importantly, it gives users the power to create their very own modules using scripts for functionality.
+[Polybar](https://github.com/polybar/polybar) enables Linux users to create customizable status bars for their desktop environments. It comes with integrated features to show details about widely used services. These include common features that you can probably see on your taskbar right now (start menu, pinned icons, network, sound, clock, etc). More importantly, it gives users the power to create their very own modules using scripts for functionality.
 
 Custom scripts included. Integrated with [themes](https://github.com/adi1090x/polybar-themes) using [pywal](https://github.com/dylanaraps/pywal) for color pallette generation based on wallpaper. Pywal is used in my terminal and IDE themes as well.
 
