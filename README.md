@@ -37,6 +37,8 @@ These scripts currently give additional functionality to existing polybar module
 - Settings
 - Power menu
 - Time
+
+Integrated with [themes](https://github.com/adi1090x/polybar-themes) using [pywal](https://github.com/dylanaraps/pywal) for color pallette generation based on wallpaper. Pywal is used for my terminal and IDE theme as well.
  
  ![screenshot](polybar_ss_setup_2.png)
 
