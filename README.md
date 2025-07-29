@@ -5,7 +5,7 @@
 [Polybar](https://github.com/polybar/polybar) lets you create customizable task bars for Linux desktop environments. It comes with many features to show details about widely used services. These include common features that you can probably see on your taskbar right now (start menu, applications, network, sound, clock, etc). It also makes it possible to create custom modules using scripts for functioinality.
 
 ## Custom Scripts
-1) window_toggle.sh
+1) toggle_app.sh
    - Launches a new application window, minimizes, or maximizes the window.
    - Formats the application icon (background color, underline, etc) according to window status.
 3) minimized_windows.sh
