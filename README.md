@@ -1,7 +1,6 @@
 # My Polybar Config
 
  ![screenshot](polybar_ss_zoomed.png)
- This is my polybar setup runnning on Linux Mint. 
 
 [Polybar](https://github.com/polybar/polybar) lets you create customizable task bars for Linux desktop environments. It comes with many features to show details about widely used services. These include common features that you can probably see on your taskbar right now (start menu, applications, network, sound, clock, etc). It also makes it possible to create custom modules using scripts for functioinality.
 
