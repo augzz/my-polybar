@@ -31,5 +31,5 @@
 - Time
  
  ![screenshot](polybar_ss_setup_2.png)
- Integrated with [themes](https://github.com/adi1090x/polybar-themes) using [pywal](https://github.com/dylanaraps/pywal) for auto color generation based on current wallpaper. Pywal color is used for my terminal and IDE theme as well.
+ Using [themes](https://github.com/adi1090x/polybar-themes) with [pywal](https://github.com/dylanaraps/pywal) for auto color generation based on current wallpaper. 
 
