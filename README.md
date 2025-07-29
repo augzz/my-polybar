@@ -3,17 +3,14 @@
  ![screenshot](polybar_ss_zoomed.png)
  This is my polybar setup runnning on Linux Mint. 
 
-[Polybar](https://github.com/polybar/polybar) lets you create customizable task bars for linux desktop environments. It comes with many features to show details about widely used services. These include common features that you can probably see on your taskbar right now (start menu, applications, network, sound, clock, etc). More importantly, it gives people the power to create their very own modules using scripts for functionality.
-
-These scripts are for custom polybar modules that are included in my setup. Basically, these add features to the taskbar that I find useful for how I use my desktop on a daily basis. For example, instead of just launching a new window on button click, I wanted to be able to click it again to either minimize it, or maximize it. As well as displaying window icons for applications that are minimized. 
+[Polybar](https://github.com/polybar/polybar) lets you create customizable task bars for Linux desktop environments. It comes with many features to show details about widely used services. These include common features that you can probably see on your taskbar right now (start menu, applications, network, sound, clock, etc). It also makes it possible to create custom modules using scripts for functioinality.
 
 ## Custom Scripts
 1) window_toggle.sh
-   - Launches a new application, if none are running, minimizes, or maximizes the window. 
-   - Used with: apps menu module.
+   - Launches a new application window, minimizes, or maximizes the window.
+   - Formats the application icon (background color, underline, etc) according to window status.
 3) minimized_windows.sh
-   - Checks for all minimized windows and maps an icon to be displayed on bar.
-   - Used with: minimized apps module.
+   - Displays all minimized windows. Click to restore a window.
   
 ## Tools Used
 ### Window Management
