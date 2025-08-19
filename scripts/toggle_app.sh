@@ -1,13 +1,12 @@
 #!/bin/bash
 
-# Uses wmctrl and xdotool to toggle app window and manage properties in Polybar.
+WINDOW_NAME=$1
+COLOR_FILE="$HOME/.config/polybar/docky/colors.ini"
+OVERLINE_COLOR=$(sed -n "/^module-fg[[:space:]]*=/ s/.*=[[:space:]]*\([^[:space:]]*\).*/\1/p" "$COLOR_FILE")
+FOREGROUND_COLOR=$(sed -n "/^primary-alt[[:space:]]*=/ s/.*=[[:space:]]*\([^[:space:]]*\).*/\1/p" "$COLOR_FILE")
+BACKGROUND_COLOR=$(sed -n "/^background[[:space:]]*=/ s/.*=[[:space:]]*\([^[:space:]]*\).*/\1/p" "$COLOR_FILE")
+BACKGROUND_ALT_COLOR=$(sed -n "/^background-alt[[:space:]]*=/ s/.*=[[:space:]]*\([^[:space:]]*\).*/\1/p" "$COLOR_FILE")
 
-app_name=$1
-overline_color="#374646" 
-foreground_color="#9D5515"  
-background_color="#1b1b1b" 
-
-# Map icon (icomoon feather font) according to app name.
 get_icon() {
     name=$1
     case $name in
@@ -23,6 +22,9 @@ get_icon() {
         "gnome-terminal")
             icon="" 
             ;;
+        "xdg-open /home/augz")
+            icon="" 
+            ;;
         *)
             icon="" # Fallback icon
             ;;
@@ -30,49 +32,28 @@ get_icon() {
     echo $icon
 }
 
-get_win_id() {
+get_window_id() {
     local win_name=$1
     wmctrl -l -x | grep -i "$win_name" | head -n 1 | awk '{print $1}'
     return $?
 }
 
-# POLYBAR STYLING FUNCTIONS
-enable_overline() {
-    echo "%{o${overline_color}}%{+o}"" ${module_icon} ""%{-o}"
+get_window_status() {
+    local win_id=$1
+    xprop -id "$win_id" 2>/dev/null | grep -c "window state: Iconic"
+    return $?
 }
 
-enable_background() {
-    echo "%{B${background_color}} ${module_icon} %{B-}"
-}
-
-enable_foreground() {
-    echo "%{F${foreground_color}}${module_icon}%{F-}"
-}
-
-enable_foreground_background() {
-    echo "%{B${background_color}}%{F${foreground_color}} ${module_icon} %{B- F-}"
-}
-
-enable_foreground_overline() {
-    echo "%{o${overline_color}}%{+o}%{F${foreground_color}}"${module_icon}"%{F-}%{-o}"
-}
-
-enable_background_overline() {
-    echo "%{o${overline_color}}%{+o}%{B${background_color}}" ${module_icon} "%{B-}%{-o}"
-}
-
-disable_formatting() {
-    echo "${module_icon}"
-}
-
+# Checks if a window is running or not and applies polybar formatting properties to it according to status.
 monitor_window() {
     local window_id=$1
+    
     while true; do
         # Check if window exists
-        if wmctrl -l -x | grep -qi "$app_name"; then
-            window_id=$(wmctrl -l -x | grep -i "$app_name" | head -n 1 | awk '{print $1}')
+        if wmctrl -l -x | grep -qi "$WINDOW_NAME"; then
+            window_id=$(get_window_id "$WINDOW_NAME")
             # Check if window is minimized
-            is_minimized=$(xprop -id "$window_id" 2>/dev/null | grep -c "window state: Iconic")
+            is_minimized=$(get_window_status "$window_id")
             if [ "$is_minimized" -eq 0 ]; then
                 # Window is active
                 enable_foreground
@@ -88,41 +69,75 @@ monitor_window() {
     done
 }
 
+### POLYBAR STYLING FUNCTIONS ###
+enable_overline() {
+    echo "%{o${OVERLINE_COLOR}}%{+o}"" ${module_icon} ""%{-o}"
+}
+
+enable_background() {
+    echo "%{B${BACKGROUND_COLOR}} ${module_icon} %{B-}"
+}
+
+enable_foreground() {
+    echo "%{F${FOREGROUND_COLOR}}${module_icon}%{F-}"
+}
+
+enable_foreground_background() {
+    echo "%{B${BACKGROUND_COLOR}}%{F${FOREGROUND_COLOR}} ${module_icon} %{B- F-}"
+}
+
+enable_foreground_overline() {
+    echo "%{o${OVERLINE_COLOR}}%{+o}%{F${FOREGROUND_COLOR}}"${module_icon}"%{F-}%{-o}"
+}
+
+enable_background_overline() {
+    echo "%{o${OVERLINE_COLOR}}%{+o}%{B${BACKGROUND_COLOR}}" ${module_icon} "%{B-}%{-o}"
+}
+
+disable_formatting() {
+    echo "${module_icon}"
+}
+### ----------------------- ###
+
 # MAIN
-module_icon=`get_icon "$app_name"`
+main() {
+    module_icon=$(get_icon "$WINDOW_NAME")
 
-# Handle toggle action (called on click)
-if [ "$2" == "toggle" ]; then
-    window_id=$(wmctrl -l -x | grep -i "$app_name" | head -n 1 | awk '{print $1}')
-    if [ -z "$window_id" ]; then
-        # Launch app if no window is found
-        "$app_name" &
-        sleep 1  # Wait for window to appear
-        new_window_id=$(wmctrl -l -x | grep -i "$app_name" | head -n 1 | awk '{print $1}')
-        if [ -n "$new_window_id" ]; then
-            enable_foreground
-        fi
-    else
-        # Toggle window state
-        is_minimized=$(xprop -id "$window_id" 2>/dev/null | grep -c "window state: Iconic")
-        if [ "$is_minimized" -eq 1 ]; then
-            # Restore window
-            wmctrl -i -a "$window_id"
-            enable_foreground
+    if [ "$2" == "toggle" ]; then
+        window_id=$(get_window_id "$WINDOW_NAME")
+
+        # Window does not exist -- launch a new one.
+        if [ -z "$window_id" ]; then
+            "$WINDOW_NAME" &
+            sleep 1 
+            new_window_id=$(get_window_id "$WINDOW_NAME")
+            if [ -n "$new_window_id" ]; then
+                enable_foreground
+            fi
+
+        # Window exists -- toggle window state.
         else
-            # Minimize window
-            xdotool windowminimize "$window_id"
-            #enable_foreground
+            is_minimized=$(get_window_status "$window_id")
+            if [ "$is_minimized" -eq 1 ]; then
+                # Restore window
+                wmctrl -i -a "$window_id"
+                enable_foreground
+            else
+                # Minimize window
+                xdotool windowminimize "$window_id"
+                #enable_foreground
+            fi
         fi
+        exit 0
     fi
-    exit 0
-fi
 
-# Start monitoring for Polybar output
-window_id=$(wmctrl -l -x | grep -i "$app_name" | head -n 1 | awk '{print $1}')
-if [ -n "$window_id" ]; then
-    monitor_window "$window_id"
-else
-    # Output without overline if no window is open
-    disable_formatting
-fi
+    # Start monitoring window.
+    window_id=$(get_window_id "$WINDOW_NAME")
+    if [ -n "$window_id" ]; then
+        monitor_window "$window_id"
+    else
+        disable_formatting
+    fi
+}
+
+main "$@"
