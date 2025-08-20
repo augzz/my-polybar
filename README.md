@@ -51,4 +51,3 @@ click-left = ~/.config/polybar/docky/scripts/minimized_windows.sh "restore"
 ![screenshot](polybar_ss_08.png)
 
 Using [polybar themes](https://github.com/adi1090x/polybar-themes) with [pywal](https://github.com/dylanaraps/pywal) you can choose to use the same color pallette for terminal, code editor, firefox, etc. 
- ![screenshot](polybar_ss_setup_2.png)
