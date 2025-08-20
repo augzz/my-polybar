@@ -1,7 +1,4 @@
 # My Polybar Config
-
- ![screenshot](polybar_ss_zoomed.png)
-
 [Polybar](https://github.com/polybar/polybar) lets you create customizable task bars for Linux desktop environments. It comes with many features to show details about widely used services. These include common features that you can probably see on your taskbar right now (start menu, applications, network, sound, clock, etc). It also makes it possible to create custom modules using scripts for functionality.
 
 ## My Custom Scripts
@@ -36,6 +33,8 @@ click-left = ~/.config/polybar/docky/scripts/toggle_app.sh "firefox" toggle
 
 ## Customization
 - You can use the pre-defined functions (under POLYBAR STYLING FUNCTIONS) in the script to customize how you would like the icon to appear according to it's status. For example, when a window is active, I enable foreground color. When a window is minimized I enable foreground + underline.  
+
+ ![screenshot](polybar_ss_08.png)
  
  ![screenshot](polybar_ss_setup_2.png)
  Using [themes](https://github.com/adi1090x/polybar-themes) with [pywal](https://github.com/dylanaraps/pywal) for auto color generation based on current wallpaper. 
