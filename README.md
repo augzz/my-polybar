@@ -34,7 +34,7 @@ click-left = ~/.config/polybar/docky/scripts/toggle_app.sh "firefox" toggle
 ## Customization
 - You can use the pre-defined functions (under POLYBAR STYLING FUNCTIONS) in the script to customize how you would like the icon to appear according to it's status. For example, when a window is active, I enable foreground color. When a window is minimized I enable foreground + underline.  
 
- ![screenshot](polybar_ss_08.png)
- 
+![screenshot](polybar_ss_08.png)
+
+Using [polybar themes](https://github.com/adi1090x/polybar-themes) with [pywal](https://github.com/dylanaraps/pywal) you can choose to use the same color pallette for terminal, code editor, firefox, etc. 
  ![screenshot](polybar_ss_setup_2.png)
- Using [themes](https://github.com/adi1090x/polybar-themes) with [pywal](https://github.com/dylanaraps/pywal) for auto color generation based on current wallpaper. 
