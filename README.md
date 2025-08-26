@@ -4,7 +4,7 @@
 ## Custom Scripts
 1) toggle_app.sh
    - Launches a new application window, minimizes, or maximizes the window.
-   - Formats ans styles the module icon (background color, underline, etc) according to window status.
+   - Changes appearance of module icon (background color, underline, etc) according to window status.
 3) minimized_windows.sh
    - Displays all currently minimized windows. Click to restore a window.
   
