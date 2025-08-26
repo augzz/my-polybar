@@ -19,6 +19,7 @@ Install [polybar themes](https://github.com/adi1090x/polybar-themes) before tryi
 
 ## Setup
 ### toggle_app.sh
+![screenshot](toggle_app_ss.png)
 - Add script into scripts folder.
 - Add the following into your polybar config file.
 ```
@@ -47,7 +48,5 @@ click-left = ~/.config/polybar/docky/scripts/minimized_windows.sh "restore"
 
 ## Customization
 - You can use the pre-defined functions (under POLYBAR STYLING FUNCTIONS) in the script to customize module icon appearance according to window status. In my setup, I use a foreground + overline styling to signify when the window is active and a foreground styling to signify when the window is minimized.  
-
-![screenshot](toggle_app_ss.png)
 
 Using [polybar themes](https://github.com/adi1090x/polybar-themes) with [pywal](https://github.com/dylanaraps/pywal) you can choose to use the same color pallette for terminal, code editor, firefox, etc. 
