@@ -22,9 +22,6 @@ get_icon() {
         "gnome-terminal")
             icon="" 
             ;;
-        "xdg-open /home/augz")
-            icon="" 
-            ;;
         *)
             icon="" # Fallback icon
             ;;
