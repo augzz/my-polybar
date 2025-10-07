@@ -5,39 +5,18 @@
 # Filter for minimized windows by checking their state.
 # Format the output to display icons according to window class -
 # with clickable actions to restore (unminimize) windows.
-# Integrated with Polybar to update dynamically.
+# For use with polybar.
 ### 
 
 polybar_action="$1"
 
-### 
-# Checks if a window is minimized using xprop.
-# GLOBALS: 
-# 	N/A
-# ARGUMENTS: 
-# 	win_id as a string
-# OUTPUTS: 
-# 	N/A
-# RETURN: 
-# 	output of executed command
-### 
 is_minimized() {
     local win_id=$1
     xprop -id "$win_id" | grep -q "_NET_WM_STATE_HIDDEN"
     return $?
 }
 
-### 
-# Maps an application class to an icon.
-# GLOBALS: 
-# 	N/A
-# ARGUMENTS: 
-# 	win_class as a string
-# OUTPUTS: 
-# 	icon as a string (FontAwesome icon)
-# RETURN: 
-# 	N/A
-### 
+# Maps an application class (string) to an icon.
 get_icon() {
     local win_class=$1
     local win_class_lower="${win_class,,}"
