@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WINDOW_NAME=$1
+window_name=$1
 COLOR_FILE="$HOME/.config/polybar/docky/colors.ini"
 OVERLINE_COLOR=$(sed -n "/^module-fg[[:space:]]*=/ s/.*=[[:space:]]*\([^[:space:]]*\).*/\1/p" "$COLOR_FILE")
 FOREGROUND_COLOR=$(sed -n "/^primary-alt[[:space:]]*=/ s/.*=[[:space:]]*\([^[:space:]]*\).*/\1/p" "$COLOR_FILE")
@@ -47,8 +47,8 @@ monitor_window() {
     
     while true; do
         # Check if window exists
-        if wmctrl -l -x | grep -qi "$WINDOW_NAME"; then
-            window_id=$(get_window_id "$WINDOW_NAME")
+        if wmctrl -l -x | grep -qi "$window_name"; then
+            window_id=$(get_window_id "$window_name")
             # Check if window is minimized
             is_minimized=$(get_window_status "$window_id")
             if [ "$is_minimized" -eq 0 ]; then
@@ -98,16 +98,16 @@ disable_formatting() {
 
 # MAIN
 main() {
-    module_icon=$(get_icon "$WINDOW_NAME")
+    module_icon=$(get_icon "$window_name")
 
     if [ "$2" == "toggle" ]; then
-        window_id=$(get_window_id "$WINDOW_NAME")
+        window_id=$(get_window_id "$window_name")
 
         # Window does not exist -- launch a new one.
         if [ -z "$window_id" ]; then
-            "$WINDOW_NAME" &
+            "$window_name" &
             sleep 1 
-            new_window_id=$(get_window_id "$WINDOW_NAME")
+            new_window_id=$(get_window_id "$window_name")
             if [ -n "$new_window_id" ]; then
                 enable_foreground
             fi
@@ -129,7 +129,7 @@ main() {
     fi
 
     # Start monitoring window.
-    window_id=$(get_window_id "$WINDOW_NAME")
+    window_id=$(get_window_id "$window_name")
     if [ -n "$window_id" ]; then
         monitor_window "$window_id"
     else
